@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -113,36 +115,96 @@
     </div>
   </header><!-- End Header -->
 
-  <div class="container mt-4">
-    <div class="card" style="width: 100%;">
-      <div class="card-header">
-        <h4 class="card-title"><%=data.address%> <%=data.block%>동 <%=data.unit%>호</h4>
+ 
+
+
+  <div id="map" style="width:600px;height:500px;display: inline-block;"></div>
+
+  <div class="container mt-4" style="display: inline-block; margin-left:30px;">
+    <div class="container mt-4">
+      <div class="row justify-content-end">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">
+                <%=data.address%>
+                  <%=data.extraAddress%>
+                    <%=data.block%>동 <%=data.unit%>호
+              </h4>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <%=data.area%>평
+              </p>
+              <p class="card-text">
+                <%=data.housing_type%>
+              </p>
+              <p class="card-text">
+                <%=data.price%>
+              </p>
+              <p class="card-subtitle mb-2"> 등록일 : <%=data.date%>
+              </p>
+              <a href="/edit/<%=data._id%>" class="card-link">수정하기</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <p class="card-text"> <%=data.area%>평</p>
-        <p class="card-text"> <%=data.housing_type%></p>
-        <p class="card-text"> <%=data.price%></p>
-        <p class="card-subtitle mb-2"> 등록일 : <%=data.date%></p>
-        <a href="/edit/<%=data._id%>" class="card-link">수정하기</a>
-      </div>
-    </div>        
+    </div>
+
   </div>
-  <div style="position: relative top-50 start-50;;">
-<div id="map" style="width:500px;height:400px;position:absolute ">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ed853d97ea70ea68eddbd6f8d4bddd5"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-      <script>
-      var container = document.getElementById('map');
-      var options = {     
-          center: new kakao.maps.LatLng(33.450701, 126.570667),
-          level: 3
+
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_API_KEY"></script>
+
+
+
+
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ed853d97ea70ea68eddbd6f8d4bddd5"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+      mapOption = {
+        center: new kakao.maps.LatLng(35.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
       };
 
-      var map = new kakao.maps.Map(container, options);
-    </script>
- </div>
-</div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    // 지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch('서울 서초구 강남대로 27 (양재동) 1동 1호', function (result, status) {
+
+      // 정상적으로 검색이 완료됐으면 
+      if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+          content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+      }
+    });
+  </script>
   <!-- ======= Footer ======= -->
   <!-- <footer id="footer">
     <div class="container">
@@ -159,16 +221,17 @@
         &copy; Copyright <strong><span>Green</span></strong>. All Rights Reserved
       </div>
       <div class="credits"> -->
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/green-free-one-page-bootstrap-template/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  <!-- All the links in the footer should remain intact. -->
+  <!-- You can delete the links only if you purchased the pro version. -->
+  <!-- Licensing information: https://bootstrapmade.com/license/ -->
+  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/green-free-one-page-bootstrap-template/ -->
+  <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer>End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
