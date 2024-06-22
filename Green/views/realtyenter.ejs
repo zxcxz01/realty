@@ -126,14 +126,14 @@
             <hr>
             <div class="mb-3 col-md-8">
                 <span for="addressInput" class="form-label">주소</span>
-                <input type="button" class="btn btn-primary mb-2 ms-1" onclick="sample6_execDaumPostcode()"
+                <input type="button" class="mb-2 ms-1" onclick="sample6_execDaumPostcode()"
                     value="주소 검색" style="background-color: #5cb874; border: none;">
-                <input class="form-label form-control p-1 flex-grow-1" type="text" id="sample6_address"
-                    placeholder="주소">
+                <input name="address" class="form-label form-control p-1 flex-grow-1" type="text" id="sample6_address"
+                    placeholder="주소" readonly>
                 <br>
                 <div class="d-flex">
-                    <input class="form-label form-control flex-grow-1 p-1" type="text" id="sample6_extraAddress"
-                        placeholder="상세주소">
+                    <input name="extraAddress" class="form-label form-control flex-grow-1 p-1" type="text"
+                        id="sample6_extraAddress" placeholder="상세주소">
                 </div>
             </div>
 
@@ -158,22 +158,37 @@
                 <label for="housingType" class="form-label">주거 형태</label>
                 <select name="housing_type" id="housingType" class="form-select p-1" aria-label="Select housing type">
                     <option selected disabled>주거 형태 선택</option>
-                    <option value="jeonse">전세</option>
-                    <option value="wolse">월세</option>
-                    <option value="self-owned">자가</option>
-                    <option value="Rent">임대</option>
+                    <option value="전세">전세</option>
+                    <option value="월세">월세</option>
+                    <option value="자가">자가</option>
+                    <option value="임대">임대</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">가격</label>
                 <input name="price" class="form-control w-25 p-1" id="exampleFormControlInput1" rows="3">
             </div>
+            <input type="hidden" name="date" id="date">
             <button class="btn btn-primary ms-2" type="submit"
                 style="background-color: #5cb874; border: none;">저장</button>
+            <button id="goBack" type="button" class="btn btn-primary ms-2"
+                style="background-color: #5cb874; border: none;">목록으로</button>
         </div>
     </form>
-    <button id="goBack" class="btn btn-custom">목록으로</button>
 
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').value = today;
+        });
+
+        document.getElementById('goBack').addEventListener('click', function () {
+            window.location.href = '/realtylist';
+        })
+
+    </script>
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
