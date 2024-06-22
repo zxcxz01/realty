@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -68,7 +70,7 @@
           <li><a class="nav-link scrollto" href="#">기업</a></li>
           <li><a class="nav-link scrollto" href="#">금융상품</a></li>
           <li><a class="nav-link scrollto " href="#">자산관리</a></li>
-          <li><a class="nav-link scrollto" href="/realtylist">부동산</a></li>
+          <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
           <li><a class="nav-link scrollto" href="#">퇴직연금</a></li>
           <li><a class="nav-link scrollto" href="#">카드</a></li>
           <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
@@ -112,55 +114,74 @@
 
     </div>
   </header><!-- End Header -->
-    
-  <table class = "table table-hover table-striped text-center container mt-4" style = "border: 1px solid;">
-    <thead>
-      <tr>         
-        <th>매물번호</th>
-        <th>주소</th>
-        <th>면적</th>
-        <th>주거 형태</th>
-        <th>가격</th>
-        <th>등록일</th>
-      </tr>
-    </thead>
-    <tbody>
-    <%for (let i = 0; i < data.length; i++) {%>
-      <tr>         
-        <td><a href="/realtycontent/<%=data[i]._id %>"><%=i+1%></a></td>
-        <td><%=data[i].address%></td>
-        <td><%=data[i].area%></td>
-        <td><%=data[i].housing_type%></td>
-        <td><%=data[i].price%></td>
-        <td><%=data[i].date%></td>
-        <td><button data-id="<%=data[i]._id %>" class = 'delete btn btn-outline-danger' >삭제</button></td>
-      </tr>
-    <% } %>  
-    </tbody>            
+
+  <div style="height: 800px;">
+    <table class="table table-hover table-striped text-center container mt-4" style="border: 1px solid;">
+      <thead>
+        <tr>
+          <th>매물번호</th>
+          <th>주소</th>
+          <th>면적</th>
+          <th>주거 형태</th>
+          <th>가격</th>
+          <th>등록일</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for (let i=0; i < data.length; i++) {%>
+          <tr>
+            <td>
+              <%=i+1%>
+            </td>
+            <td><a href="/realtycontent/<%=data[i]._id %>">
+                <%=data[i].address %>
+              </a>
+            </td>
+            <td>
+              <%=data[i].area %>
+            </td>
+            <td>
+              <%=data[i].housing_type %>
+            </td>
+            <td>
+              <%= data[i].price.toLocaleString() %> 원
+            </td>
+            <td>
+              <%=data[i].date%>
+            </td>
+            <td><button data-id="<%=data[i]._id %>" class='delete btn btn-outline-danger'>삭제</button></td>
+          </tr>
+          <% } %>
+      </tbody>
     </table>
     <div style="text-align: center;"><a href="/realtyenter" class="btn">등록하기</a></div>
-    
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-      <script>
-        $('.delete').click(function (e) {
-          let item = $(this);
-          let sid = e.target.dataset.id;
-          $.ajax({
-            type:'post',
-            url:'/delete',
-            data:{_id:sid}
-          })
-          .done(function (result) {
-            item.parent('td').parent('tr').remove();
-          })
-          .fail(function (xhr, textStatus, err) {
-            alert(err);
-          });
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script>
+    $('.delete').click(function (e) {
+      let item = $(this);
+      let sid = e.target.dataset.id;
+      $.ajax({
+        type: 'post',
+        url: '/delete',
+        data: { _id: sid }
+      })
+        .done(function (result) {
+          item.parent('td').parent('tr').remove();
         })
-      </script>
+        .fail(function (xhr, textStatus, err) {
+          alert(err);
+        });
+    })
+  </script>
 
 
   <!-- ======= Footer ======= -->
@@ -188,7 +209,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
