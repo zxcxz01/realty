@@ -5,7 +5,7 @@ GreenBank
 1.Introduce
 -
 Project Summary
-GreenBank - 은행 웹사이트를 배경으로 부동산 매수/매입, 매물조회, 로그인/로그아웃, 회원가입을 node.js로 구현
+GreenBank - 은행 웹사이트를 배경으로 회원가입, 로그인/로그아웃, 부동산 매입/매수, 매물조회, 매물수정/삭제를 node.js로 구현
 
 **1.1 Team**
 -  4조 김영광
@@ -34,6 +34,7 @@ GreenBank - 은행 웹사이트를 배경으로 부동산 매수/매입, 매물�
 - user-로그인
 - building-등록
 - building-조회
+- building-수정/삭제
 
 2.구조
 -
@@ -112,3 +113,33 @@ GreenBank - 은행 웹사이트를 배경으로 부동산 매수/매입, 매물�
 -  구매하기 버튼 클릭 시 매물 상세정보 링크 비활성화
 
 **3.5 부동산 - 매물 수정/삭제**
+
+![image](https://github.com/sssoeun/realty/assets/139853314/c9ac8b57-3262-4164-acaa-3e5460c3d46d)
+
+
+![image](https://github.com/sssoeun/realty/assets/139853314/dc6c9c64-06b6-4f49-913c-d476a3fef61f)
+
+-  매물 상세정보 페이지에서 수정하기 누를 시 수정 페이지로 이동
+
+![image](https://github.com/sssoeun/realty/assets/139853314/953d2cb1-c49e-4c3d-9b26-bbf5507e2db4)
+
+- 수정 폼에서 내용을 변경한 후 수정완료 버튼을 누르면 값이 수정
+
+![image](https://github.com/sssoeun/realty/assets/139853314/0c6569f7-776f-449d-8a83-5689ee43cb22)
+
+![image](https://github.com/sssoeun/realty/assets/139853314/5df3814a-3647-4c44-9215-de1107a6ca4a)
+
+- 매물 목록 리스트에서 삭제 버튼을 누를 시 삭제 여부를 묻는 alert창이 뜨고, 예를 누를 시 삭제
+
+
+4.소감
+-
+
+김영광
+
+https://velog.io/@zxcxz01/페어-프로젝트
+
+정소은
+
+다양한 기능을 추가하는 과정에서 많은 시행착오를 겪으며 많은 것을 배웠다.
+아직 모든 코드를 완벽히 이해하지는 못했지만, 기능을 확장해 나가면서 점차 내 것으로 만들어 갈 것이다.
