@@ -58,53 +58,53 @@
     </section>
 
     <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center">
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="/index">Green</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <h1 class="logo me-auto"><a href="/index">Green</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-        <nav id="navbar" class="navbar">
-            <ul>
-                <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
-                <li><a class="nav-link scrollto" href="#about">기업</a></li>
-                <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
-                <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
-                <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
-                <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
-                <li><a class="nav-link scrollto" href="#team">카드</a></li>
-                <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">금융 서비스</a></li>
-                        <li><a href="#">특화 서비스</a></li>
-                        <li><a href="#">멤버십 서비스</a></li>
-                        <li><a href="#">GREEN과 함께</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#"><img src="../assets/img/korean.png" style="height: 20px;" alt="">Korean</a>
-                        </li>
-                        <li><a href="#"><img src="../assets/img/english.png" style="height: 20px;"
-                                    alt="">English</a></li>
-                        <li><a href="#"><img src="../assets/img/chinese.png" style="height: 20px;"
-                                    alt="">Chinese</a></li>
-                        <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;"
-                                    alt="">Japanese</a></li>
-                    </ul>
-                </li>
-                <% if (isLoggedIn) {%>
-                    <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
-                <% } else { %>
-                    <li><a class="getstarted scrollto" href="/login">로그인</a></li>
-                <% } %>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
+                    <li><a class="nav-link scrollto" href="#about">기업</a></li>
+                    <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
+                    <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
+                    <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
+                    <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
+                    <li><a class="nav-link scrollto" href="#team">카드</a></li>
+                    <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#">금융 서비스</a></li>
+                            <li><a href="#">특화 서비스</a></li>
+                            <li><a href="#">멤버십 서비스</a></li>
+                            <li><a href="#">GREEN과 함께</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#"><img src="../assets/img/korean.png" style="height: 20px;" alt="">Korean</a>
+                            </li>
+                            <li><a href="#"><img src="../assets/img/english.png" style="height: 20px;"
+                                        alt="">English</a></li>
+                            <li><a href="#"><img src="../assets/img/chinese.png" style="height: 20px;"
+                                        alt="">Chinese</a></li>
+                            <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;"
+                                        alt="">Japanese</a></li>
+                        </ul>
+                    </li>
+                    <% if (isLoggedIn) {%>
+                        <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+                        <% } else { %>
+                            <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                            <% } %>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
 
 
-    </div>
+        </div>
     </header><!-- End Header -->
 
     <form action="/realtyedit" method="post">
@@ -123,32 +123,40 @@
                     placeholder="주소" value="<%=data.address%>" readonly>
                 <br>
                 <div class="d-flex">
-                    <input name="extraAddress" class="form-label form-control flex-grow-1 p-1" type="text" id="sample6_extraAddress"
-                        placeholder="상세주소" value="<%=data.extraAddress%>">
+                    <input name="extraAddress" class="form-label form-control flex-grow-1 p-1" type="text"
+                        id="sample6_extraAddress" placeholder="상세주소" value="<%=data.extraAddress%>">
                 </div>
             </div>
 
 
             <div class="mb-3 d-flex align-items-end">
                 <label for="exampleFormControlInput1" class="form-label">동</label>
-                <input name="block" value="<%=data.block%>" type="text" class="form-control w-25 p-1 me-2" id="exampleFormControlInput1">
+                <input name="block" value="<%=data.block%>" type="text" class="form-control w-25 p-1 me-2"
+                    id="exampleFormControlInput1">
                 <label for="exampleFormControlInput1" class="form-label me-2">호수</label>
-                <input name="unit" value="<%=data.unit%>" type="text" class="form-control w-25 p-1" id="exampleFormControlInput1">
+                <input name="unit" value="<%=data.unit%>" type="text" class="form-control w-25 p-1"
+                    id="exampleFormControlInput1">
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="area" class="form-label">면적</label>
                 <select name="area" id="area" class="form-select p-1" aria-label="Select area">
-                    <option selected><%=data.area%></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>
+                        <%=data.area%>
+                    </option>
+                    <option value="25평">25평</option>
+                    <option value="30평">30평</option>
+                    <option value="35평">35평</option>
+                    <option value="40평">40평</option>
+                    <option value="45평">45평</option>
                 </select>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="housingType" class="form-label">주거 형태</label>
                 <select name="housing_type" id="housingType" class="form-select p-1" aria-label="Select housing type">
-                    <option selected><%=data.housing_type%></option>
+                    <option selected>
+                        <%=data.housing_type%>
+                    </option>
                     <option value="전세">전세</option>
                     <option value="월세">월세</option>
                     <option value="자가">자가</option>
@@ -157,27 +165,29 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">가격</label>
-                <input name="price" value="<%=data.price%>" class="form-control w-25 p-1" id="exampleFormControlInput1" rows="3">
+                <input name="price" value="<%=data.price%>" class="form-control w-25 p-1" id="exampleFormControlInput1"
+                    rows="3">
             </div>
             <input type="hidden" name="date" id="date">
             <button class="btn btn-primary ms-2" type="submit"
                 style="background-color: #5cb874; border: none;">수정</button>
-                <button id="goBack" type="button" class="btn btn-primary ms-2" style="background-color: #5cb874; border: none;">목록으로</button>
+            <button id="goBack" type="button" class="btn btn-primary ms-2"
+                style="background-color: #5cb874; border: none;">목록으로</button>
         </div>
     </form>
-    
-    
+
+
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             let today = new Date().toISOString().split('T')[0];
             document.getElementById('date').value = today;
         });
 
         document.getElementById('goBack').addEventListener('click', function () {
-            window.location.href='/realtylist';
+            window.location.href = '/realtylist';
         })
-        
+
     </script>
 
     <!-- ======= Footer ======= -->
@@ -219,7 +229,7 @@
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>       
+    <script>
         function sample6_execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function (data) {

@@ -4,13 +4,6 @@ const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-//라우터 생성
-// let mainRouter = require('./routes/main');
-// const router = express.Router();
-// app.use('/', router);
-
-const bcrypt = require('bcrypt');
-
 const path = require('path');
 
 const mongoclient = require('mongodb').MongoClient;
@@ -372,7 +365,7 @@ app.post('/login', (req, res) => {
                 if (userPw === result.userPw) {
                     req.session.userId = userId;
                     req.session.isLoggedIn = true;
-                    return res.redirect('/index');
+                    return res.json({ success: true, redirectUrl: '/index' });
                 } else {
                     return res.json({ success: false, message: '로그인 실패' });
                 }

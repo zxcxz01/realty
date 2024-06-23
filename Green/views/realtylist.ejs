@@ -236,23 +236,6 @@
       }
     });
 
-    $('.delete').click(function (e) {
-      let item = $(this);
-      let sid = e.target.dataset.id;
-      if (confirm('삭제하시겠습니까?')) {
-        $.ajax({
-          type: 'post',
-          url: '/delete',
-          data: { _id: sid }
-        })
-          .done(function (result) {
-            item.parent('td').parent('tr').remove();
-          })
-          .fail(function (xhr, textStatus, err) {
-            alert(err);
-          });
-      }
-    });
   </script>
 
 
@@ -339,26 +322,44 @@
         tbody.appendChild(row);
       });
 
-      // document.querySelectorAll('.delete').forEach(button => {
-      //     button.addEventListener('click', async (event) => {
-      //       const id = event.target.getAttribute('data-id');
-      //       if (confirm('삭제하시겠습니까?')) {
-      //         const response = await fetch('/delete', {
-      //           method: 'post',
-      //           headers: {
-      //             'content-type': 'application/json'
-      //           },
-      //           body: JSON.stringify({ _id: id })
-      //         });
+      $('.delete').click(function (e) {
+        let item = $(this);
+        let sid = e.target.dataset.id;
+        if (confirm('삭제하시겠습니까?')) {
+          $.ajax({
+            type: 'post',
+            url: '/delete',
+            data: { _id: sid }
+          })
+            .done(function (result) {
+              item.parent('td').parent('tr').remove();
+            })
+            .fail(function (xhr, textStatus, err) {
+              alert(err);
+            });
+        }
+      });
 
-      //         if (response.ok) {
-      //           event.target.closest('tr').remove();
-      //         } else {
-      //           alert('삭제 실패');
-      //         }
+      // document.querySelectorAll('.delete').forEach(button => {
+      //   button.addEventListener('click', async (event) => {
+      //     const id = event.target.getAttribute('data-id');
+      //     if (confirm('삭제하시겠습니까?')) {
+      //       const response = await fetch('/delete', {
+      //         method: 'post',
+      //         headers: {
+      //           'content-type': 'application/json'
+      //         },
+      //         body: JSON.stringify({ _id: id })
+      //       });
+
+      //       if (response.ok) {
+      //         event.target.closest('tr').remove();
+      //       } else {
+      //         alert('삭제 실패');
       //       }
-      //     });
+      //     }
       //   });
+      // });
     }
 
     function renderPagination(totalPages, currentPage, sortCriteria) {
@@ -405,6 +406,7 @@
         renderPagination(totalPages, 1, 'dateNew');  //처음 로딩 시 1페이지, 기본 정렬 기준으로 페이지네이션 렌더링
       });
     });
+
 
   </script>
 
