@@ -67,15 +67,6 @@
                             <li><a href="#">특화 서비스</a></li>
                             <li><a href="#">멤버십 서비스</a></li>
                             <li><a href="#">GREEN과 함께</a></li>
-                            <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-center"></i></a>
-            <ul>
-              <li><a href="#">Deep Drop Down 1</a></li>
-              <li><a href="#">Deep Drop Down 2</a></li>
-              <li><a href="#">Deep Drop Down 3</a></li>
-              <li><a href="#">Deep Drop Down 4</a></li>
-              <li><a href="#">Deep Drop Down 5</a></li>
-            </ul>
-          </li> -->
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
@@ -90,7 +81,11 @@
                                         alt="">Japanese</a></li>
                         </ul>
                     </li>
-                    <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                    <% if (isLoggedIn) {%>
+                        <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+                        <% } else { %>
+                            <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                            <% } %>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -131,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="/login" method="post">
+                            <form action="/login" method="post" id="loginForm">
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
@@ -142,9 +137,9 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" name="password" id="password"
+                                            <input type="password" class="form-control" name="userPw" id="userPw"
                                                 value="" placeholder="비밀번호" required>
-                                            <label for="password" class="form-label">비밀번호</label>
+                                            <label for="userPw" class="form-label">비밀번호</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -159,7 +154,8 @@
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button style="background-color: #5cb874; border:#5cb874"
-                                                class="btn btn-primary btn-lg" type="submit">로그인</button>
+                                                class="btn btn-primary btn-lg" id="validatelogin"
+                                                type="submit">로그인</button>
                                         </div>
                                     </div>
                                 </div>
@@ -209,21 +205,39 @@
         </div>
     </section>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
     <script>
-        window.addEventListener('load', () => {
-            const forms = document.getElementsByClassName('validation-form');
+        // 로그인 폼 submit 이벤트 리스너
+        $('#loginForm').submit(function (event) {
+            event.preventDefault(); // 기본 동작 방지
 
-            Array.prototype.filter.call(forms, (form) => {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
+            // 로그인 데이터 수집
+            var userId = $('#userId').val();
+            var userPw = $('#userPw').val();
+
+            // 서버에 로그인 요청 보내기
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: {
+                    userId: userId,
+                    userPw: userPw
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // 로그인 성공 시 처리
+                        window.location.href = '/index'; // 예시로 index 페이지로 이동
+                    } else {
+                        // 로그인 실패 시 처리
+                        alert(response.message); // 서버에서 받은 메시지를 alert 창으로 표시
                     }
-
-                    form.classList.add('was-validated');
-                }, false);
+                },
+                error: function () {
+                    alert('서버 오류가 발생했습니다.'); // AJAX 요청 실패 시 처리
+                }
             });
-        }, false);
+        });
     </script>
 </body>
 
