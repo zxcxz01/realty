@@ -60,60 +60,51 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="/index">Green</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo me-auto"><a href="/index">Green</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#">개인</a></li>
-          <li><a class="nav-link scrollto" href="#">기업</a></li>
-          <li><a class="nav-link scrollto" href="#">금융상품</a></li>
-          <li><a class="nav-link scrollto " href="#">자산관리</a></li>
-          <li><a class="nav-link scrollto" href="/realtylist">부동산</a></li>
-          <li><a class="nav-link scrollto" href="#">퇴직연금</a></li>
-          <li><a class="nav-link scrollto" href="#">카드</a></li>
-          <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
+        <nav id="navbar" class="navbar">
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+                <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
+                <li><a class="nav-link scrollto" href="#about">기업</a></li>
+                <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
+                <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
+                <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
+                <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
+                <li><a class="nav-link scrollto" href="#team">카드</a></li>
+                <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">금융 서비스</a></li>
+                        <li><a href="#">특화 서비스</a></li>
+                        <li><a href="#">멤버십 서비스</a></li>
+                        <li><a href="#">GREEN과 함께</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#"><img src="../assets/img/korean.png" style="height: 20px;" alt="">Korean</a>
+                        </li>
+                        <li><a href="#"><img src="../assets/img/english.png" style="height: 20px;"
+                                    alt="">English</a></li>
+                        <li><a href="#"><img src="../assets/img/chinese.png" style="height: 20px;"
+                                    alt="">Chinese</a></li>
+                        <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;"
+                                    alt="">Japanese</a></li>
+                    </ul>
+                </li>
+                <% if (isLoggedIn) {%>
+                    <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+                <% } else { %>
+                    <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                <% } %>
             </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
 
     </div>
-  </header><!-- End Header -->
+</header><!-- End Header -->
 
 
 
@@ -130,45 +121,77 @@
             <h4 class="card-title">
               <%=data.address%>
                 <%=data.extraAddress%>
-                  <%=data.block%>동 <%=data.unit%>호
+                  <p><%=data.block%>동 <%=data.unit%>호</p>
             </h4>
           </div>
           <div class="card-body">
             <p class="card-text">
-              <%=data.area%>평
+              평수: <%=data.area%>
             </p>
             <p class="card-text">
-              <%=data.housing_type%>
+              주거 형태: <%=data.housing_type%>
             </p>
             <p class="card-text">
-              <%=data.price%>
+              가격: <%=data.price.toLocaleString()%>원
             </p>
             <p class="card-subtitle mb-5"> 등록일 : <%=data.date%>
             </p>
-            <a href="/realtyedit/<%=data._id%>" class="card-link">수정하기</a>
+            <button data-id="<%=data._id %>" class='buy btn btn-primary ms-2' style="background-color: #5cb874; border: none;">구매하기</button>
+            <a href="/realtyedit/<%=data._id%>" class="btn btn-primary ms-2" style="background-color: #5cb874; border: none;">수정하기</a>
             <input type="hidden" id="data" value='<%=JSON.stringify(data)%>'>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ed853d97ea70ea68eddbd6f8d4bddd5&libraries=services"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ed853d97ea70ea68eddbd6f8d4bddd5"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $('.buy').click(function (e) {
+      let item = $(this);
+      let sid = e.target.dataset.id;
+      if(confirm('구매하시겠습니까?')) {
+        $.ajax({
+        type: 'post',
+        url: '/buy',
+        data: { _id: sid}
+      })
+        .done(function (result) {
+          alert(result.message);
+          window.location.href='/realtylist';
+        })
+        .fail(function (xhr, textStatus, err) {
+          alert(err);
+        });
+      }      
+    });
+  </script>
 
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1ed853d97ea70ea68eddbd6f8d4bddd5&libraries=services"></script>
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <script>
+    $(document).ready(function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get('message');
+      if (message) {
+        alert(message);
+      }
+    }); 
+
     var jsonData = document.getElementById("data").value;
     var data = JSON.parse(jsonData);
     var sumAddress = data.address + data.extraAddress;
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
 
-    var callback = function (result, status) {
-      if (status === kakao.maps.services.Status.OK) {
+    var callback = function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
         console.log(result);
-      }
+    }
     };
 
     geocoder.addressSearch(sumAddress, callback);
@@ -182,7 +205,7 @@
     // 지도를 생성합니다    
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
-
+    
 
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch(sumAddress, function (result, status) {
@@ -205,22 +228,6 @@
       }
     });
   </script>
-
-
-  <!-- ======================== 지도 ============================ -->
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- ======= Cta Section ======= -->
   <section id="cta" class="cta" style="margin-top: 70px;">
     <div class="container">

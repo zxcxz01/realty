@@ -78,15 +78,6 @@
               <li><a href="#">특화 서비스</a></li>
               <li><a href="#">멤버십 서비스</a></li>
               <li><a href="#">GREEN과 함께</a></li>
-              <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-center"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li> -->
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
@@ -97,7 +88,11 @@
               <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;" alt="">Japanese</a></li>
             </ul>
           </li>
-          <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+          <% if (isLoggedIn) {%>
+            <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+          <% } else { %>
+            <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+          <% } %>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

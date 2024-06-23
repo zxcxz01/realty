@@ -46,6 +46,7 @@
     .map {
       margin-left: 300px;
     }
+    
   </style>
 </head>
 
@@ -72,60 +73,51 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="/index">Green</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo me-auto"><a href="/index">Green</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
-          <li><a class="nav-link scrollto" href="#about">기업</a></li>
-          <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
-          <li><a class="nav-link scrollto" href="#team">부동산</a></li>
-          <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
-          <li><a class="nav-link scrollto" href="#team">카드</a></li>
-          <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
+        <nav id="navbar" class="navbar">
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+                <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
+                <li><a class="nav-link scrollto" href="#about">기업</a></li>
+                <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
+                <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
+                <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
+                <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
+                <li><a class="nav-link scrollto" href="#team">카드</a></li>
+                <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">금융 서비스</a></li>
+                        <li><a href="#">특화 서비스</a></li>
+                        <li><a href="#">멤버십 서비스</a></li>
+                        <li><a href="#">GREEN과 함께</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#"><img src="../assets/img/korean.png" style="height: 20px;" alt="">Korean</a>
+                        </li>
+                        <li><a href="#"><img src="../assets/img/english.png" style="height: 20px;"
+                                    alt="">English</a></li>
+                        <li><a href="#"><img src="../assets/img/chinese.png" style="height: 20px;"
+                                    alt="">Chinese</a></li>
+                        <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;"
+                                    alt="">Japanese</a></li>
+                    </ul>
+                </li>
+                <% if (isLoggedIn) {%>
+                    <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+                <% } else { %>
+                    <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                <% } %>
             </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
 
     </div>
-  </header><!-- End Header -->
+</header><!-- End Header -->
 
 
   <aside class="side">
@@ -150,12 +142,10 @@
           </button>
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body"><a href="/realtylist">최신</a>
+          <div class="accordion-body"><a href="/realtylist">전체 매물</a>
           </div>
-          <div class="accordion-body"><a href="">주간</a>
-          </div>
-          <div class="accordion-body"><a href="">월간</a>
-          </div>
+          <!-- <div class="accordion-body"><a href="">월간</a>
+          </div> -->
         </div>
       </div>
     </div>
@@ -163,20 +153,16 @@
 
 
   <!-- ======= About Us Section ======= -->
+  <div class="map">
+    <section id="about" class="about" style="width: 1300px; height: 800px;">
 
-  <section id="map" class="map" style="width: 1300px; height: 700px; margin-bottom: 30px;">
-    <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f7f386646c06c44c8c179bab7b00efd"></script>
-    <script>var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-      var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new kakao.maps.LatLng(37.497946, 127.027635), //지도의 중심좌표.
-        level: 3 //지도의 레벨(확대, 축소 정도)
-      };
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.964866799236!2d127.0276184153944!3d37.4979124798085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159d3e073cf%3A0xcfddeb993ed3a869!2z6rSR7Jet7IucIOqzteyLnCDsiJjsm5DsoJA!5e0!3m2!1sko!2skr!4v1622378961232"
+        frameborder="0" style="border:0; width: 100%; height: 100%;" allowfullscreen></iframe>
 
-      var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-    </script>
-  </section><!-- End About Us Section -->
 
+    </section><!-- End About Us Section -->
+  </div>
 
   <!-- ======= Cta Section ======= -->
   <section id="cta" class="cta">

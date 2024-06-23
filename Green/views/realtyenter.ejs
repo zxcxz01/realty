@@ -29,6 +29,8 @@
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- =======================================================
   * Template Name: Green
   * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
@@ -61,59 +63,49 @@
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index">Green</a></h1>
+            <h1 class="logo me-auto"><a href="/index">Green</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#">개인</a></li>
-                    <li><a class="nav-link scrollto" href="#">기업</a></li>
-                    <li><a class="nav-link scrollto" href="#">금융상품</a></li>
-                    <li><a class="nav-link scrollto " href="#">자산관리</a></li>
-                    <li><a class="nav-link scrollto" href="realty">부동산</a></li>
-                    <li><a class="nav-link scrollto" href="#">퇴직연금</a></li>
-                    <li><a class="nav-link scrollto" href="#">카드</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">개인</a></li>
+                    <li><a class="nav-link scrollto" href="#about">기업</a></li>
+                    <li><a class="nav-link scrollto" href="#services">금융상품</a></li>
+                    <li><a class="nav-link scrollto " href="#portfolio">자산관리</a></li>
+                    <li><a class="nav-link scrollto" href="/realty">부동산</a></li>
+                    <li><a class="nav-link scrollto" href="#team">퇴직연금</a></li>
+                    <li><a class="nav-link scrollto" href="#team">카드</a></li>
                     <li class="dropdown"><a href="#"><span>전체 서비스</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                                        class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
+                            <li><a href="#">금융 서비스</a></li>
+                            <li><a href="#">특화 서비스</a></li>
+                            <li><a href="#">멤버십 서비스</a></li>
+                            <li><a href="#">GREEN과 함께</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="#"><span>Global</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                                        class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
+                            <li><a href="#"><img src="../assets/img/korean.png" style="height: 20px;" alt="">Korean</a>
                             </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
+                            <li><a href="#"><img src="../assets/img/english.png" style="height: 20px;"
+                                        alt="">English</a></li>
+                            <li><a href="#"><img src="../assets/img/chinese.png" style="height: 20px;"
+                                        alt="">Chinese</a></li>
+                            <li><a href="#"><img src="../assets/img/japanese.png" style="height: 20px;"
+                                        alt="">Japanese</a></li>
                         </ul>
                     </li>
-                    <li><a class="getstarted scrollto" href="#about">시작하기</a></li>
+                    <% if (isLoggedIn) {%>
+                        <li><a class="getstarted scrollto" href="/logout">로그아웃</a></li>
+                    <% } else { %>
+                        <li><a class="getstarted scrollto" href="/login">로그인</a></li>
+                    <% } %>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
+            </nav>
+
+
         </div>
     </header><!-- End Header -->
 
@@ -126,14 +118,14 @@
             <hr>
             <div class="mb-3 col-md-8">
                 <span for="addressInput" class="form-label">주소</span>
-                <input type="button" class="mb-2 ms-1" onclick="sample6_execDaumPostcode()"
+                <input type="button" class="btn btn-primary mb-2 ms-1" onclick="sample6_execDaumPostcode()"
                     value="주소 검색" style="background-color: #5cb874; border: none;">
                 <input name="address" class="form-label form-control p-1 flex-grow-1" type="text" id="sample6_address"
                     placeholder="주소" readonly>
                 <br>
                 <div class="d-flex">
-                    <input name="extraAddress" class="form-label form-control flex-grow-1 p-1" type="text"
-                        id="sample6_extraAddress" placeholder="상세주소">
+                    <input name="extraAddress" class="form-label form-control flex-grow-1 p-1" type="text" id="sample6_extraAddress"
+                        placeholder="상세주소">
                 </div>
             </div>
 
@@ -149,9 +141,11 @@
                 <label for="area" class="form-label">면적</label>
                 <select name="area" id="area" class="form-select p-1" aria-label="Select area">
                     <option selected disabled>면적 선택</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="25평">25평</option>
+                    <option value="30평">30평</option>
+                    <option value="35평">35평</option>
+                    <option value="40평">40평</option>
+                    <option value="45평">45평</option>
                 </select>
             </div>
             <div class="col-md-6 mb-3">
@@ -169,25 +163,35 @@
                 <input name="price" class="form-control w-25 p-1" id="exampleFormControlInput1" rows="3">
             </div>
             <input type="hidden" name="date" id="date">
+            <input type="hidden" name="status" id="status" value="판매중">
             <button class="btn btn-primary ms-2" type="submit"
-                style="background-color: #5cb874; border: none;">저장</button>
-            <button id="goBack" type="button" class="btn btn-primary ms-2"
-                style="background-color: #5cb874; border: none;">목록으로</button>
+                style="background-color: #5cb874; border: none;">등록</button>
+                <button id="goBack" type="button" class="btn btn-primary ms-2" style="background-color: #5cb874; border: none;">취소</button>
         </div>
     </form>
-
-
+    
+    
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let today = new Date().toISOString().split('T')[0];
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            if (message) {
+                alert(message);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const offset = new Date().getTimezoneOffset() * 60000;
+            const today = new Date(Date.now() - offset).toISOString().split('T')[0];
             document.getElementById('date').value = today;
+            console.log(today);
         });
 
         document.getElementById('goBack').addEventListener('click', function () {
-            window.location.href = '/realtylist';
-        })
-
+            window.history.back();
+        });
+        
     </script>
 
     <!-- ======= Footer ======= -->
