@@ -126,7 +126,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <form action="/login" method="post" id="loginForm">
                                 <div class="row gy-3 overflow-hidden">
                                     <div class="col-12">
@@ -155,7 +154,6 @@
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button style="background-color: #5cb874; border:#5cb874"
-
                                                 class="btn btn-primary btn-lg" id="validatelogin"
                                                 type="submit">로그인</button>
                                         </div>
@@ -208,7 +206,6 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
 
     <script>
         // 로그인 폼 submit 이벤트 리스너
@@ -242,35 +239,15 @@
             });
         });
 
-            $('#loginForm').on('submit', function (event) {
-                event.preventDefault(); // 폼 제출을 막음
-
-                let formvalue = $(this).serialize();
-
-                $.ajax({
-                    type: 'post',
-                    url: '/login',
-                    data: formvalue,
-                    dataType: 'json',
-                }).done(function (result) {
-                    alert(result.message);
-                    if (result.success) {
-                        window.location.href = '/index';
-                    }
-                }).fail(function (xhr, textStatus, err) {
-                    alert('로그인 실패');
-                });
-            });
-        }, false);
-
-        $(document).ready(function() {
+        $(document).ready(function () {
             const urlParams = new URLSearchParams(window.location.search);
             const message = urlParams.get('message');
             if (message) {
                 alert(message);
+                // URL에서 message 파라미터 제거
+                window.history.replaceState({}, document.title, window.location.pathname);
             }
-        }); 
-
+        });
     </script>
 </body>
 
