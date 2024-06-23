@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="searchButton">주소 검색 결과 확인하기</button>
+
+    <script type="text/javascript"
+        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0f7f386646c06c44c8c179bab7b00efd&libraries=services"></script>
+
+    <script>
+        // Kakao Maps SDK 로드 후 실행될 콜백 함수
+        function initKakaoMap() {
+            var geocoder = new kakao.maps.services.Geocoder();
+            var address = '서울특별시 강남구 역삼동 123-45';
+
+            // 버튼 클릭 이벤트 처리
+            document.getElementById('searchButton').addEventListener('click', function () {
+                geocoder.addressSearch('서울특별시 강남구 역삼동 123-45', function (result, status) {
+                    if (status === kakao.maps.services.Status.OK) {
+                        var latitude = result[0].y;  // 위도
+                        var longitude = result[0].x; // 경도
+                        console.log('위도:', latitude, '경도:', longitude);
+                    } else {
+                        console.log('주소 검색 실패: ' + status);
+                    }
+                });
+            });
+        }
+
+        // Kakao Maps SDK 로드
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=0f7f386646c06c44c8c179bab7b00efd&libraries=services';
+        script.onload = function () {
+            kakao.maps.load(function () {
+                initKakaoMap();
+            });
+        };
+        document.head.appendChild(script);
+    </script>
+
+</body>
+
+</html>
